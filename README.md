@@ -1,4 +1,4 @@
-# path
+# path-module
 
 This is a port of the Node ’path’ module ported to ES2022 and published to npm
 as a browser-compatible, standard JavaScript module.

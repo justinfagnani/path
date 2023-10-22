@@ -1,6 +1,7 @@
 {
   "name": "path-module",
-  "version": "0.1.1",
+  "version": "0.1.2",
+  "type": "module",
   "author": {
     "name": "Justin Fagnani",
     "url": "https://justinfagnani.com"
@@ -29,5 +30,12 @@
   "devDependencies": {
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"
+  },
+  "exports": {
+    ".": {
+      "types": "./path.d.ts",
+      "import": "./path.js",
+      "default": "./path.js"
+    }
   }
 }
