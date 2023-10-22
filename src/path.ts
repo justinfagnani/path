@@ -19,8 +19,9 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-const isObject = (o: unknown) => o !== null && typeof o === 'object';
-const isString = (x: string) => typeof x === 'string';
+const isObject = (o: unknown): o is object =>
+  o !== null && typeof o === 'object';
+const isString = (x: string): x is string => typeof x === 'string';
 
 // resolves . and .. elements in a path array with directory names there
 // must be no slashes or device names (c:\) in the array
@@ -46,7 +47,7 @@ const normalizeArray = (parts: Array<string>, allowAboveRoot?: boolean) => {
   }
 
   return res;
-}
+};
 
 // Split a filename into [root, dir, basename, ext], unix version
 // 'root' is just a slash, or nothing.
@@ -59,7 +60,7 @@ const posixSplitPath = (filename: string) =>
 const getCwd = (): string => {
   // @ts-expect-error
   return typeof process !== 'undefined' ? process.cwd() : '/';
-}
+};
 
 // path.resolve([from ...], to)
 // posix version
@@ -87,7 +88,7 @@ export const resolve = (...args: Array<string>) => {
   // Normalize the path
   resolvedPath = normalizeArray(
     resolvedPath.split('/'),
-    !resolvedAbsolute
+    !resolvedAbsolute,
   ).join('/');
 
   return (resolvedAbsolute ? '/' : '') + resolvedPath ?? '.';
@@ -224,7 +225,7 @@ interface Path {
 export const format = (pathObject: Path) => {
   if (!isObject(pathObject)) {
     throw new TypeError(
-      "Parameter 'pathObject' must be an object, not " + typeof pathObject
+      "Parameter 'pathObject' must be an object, not " + typeof pathObject,
     );
   }
 
@@ -233,7 +234,7 @@ export const format = (pathObject: Path) => {
   if (!isString(root)) {
     throw new TypeError(
       "'pathObject.root' must be a string or undefined, not " +
-        typeof pathObject.root
+        typeof pathObject.root,
     );
   }
 
@@ -245,7 +246,7 @@ export const format = (pathObject: Path) => {
 export const parse = (pathString: string): Path => {
   if (!isString(pathString)) {
     throw new TypeError(
-      "Parameter 'pathString' must be a string, not " + typeof pathString
+      "Parameter 'pathString' must be a string, not " + typeof pathString,
     );
   }
   const allParts = posixSplitPath(pathString);

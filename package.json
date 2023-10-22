@@ -1,13 +1,14 @@
 {
   "name": "path-module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "Justin Fagnani",
     "url": "https://justinfagnani.com"
   },
   "description": "Node path module as a browser-compatible standard JS module",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "format": "prettier --write src/path.ts"
   },
   "files": [
     "path.js",
@@ -25,9 +26,8 @@
     "url": "git://github.com/jinder/path.git"
   },
   "main": "./path.js",
-  "dependencies": {
-  },
   "devDependencies": {
+    "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   }
 }
