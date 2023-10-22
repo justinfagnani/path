@@ -22,7 +22,7 @@
   "homepage": "http://nodejs.org/docs/latest/api/path.html",
   "repository": {
     "type": "git",
-    "url": "git://github.com/jinder/path.git"
+    "url": "git://github.com/justinfagnani/path.git"
   },
   "main": "./path.js",
   "dependencies": {
